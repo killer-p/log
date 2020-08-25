@@ -4,6 +4,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+#define LOG_ENABLE 1
+
 //颜色的宏定义
 #define NONE      "\e[0m"	//消除颜色
 #define LOG_RED_H "\e[1;31m"	//亮红色
@@ -13,7 +15,7 @@
 #define LOG_YELLOW_H "\e[1;33m"
 #define LOG_YELLOW_L	"\e[0;33m"
 
-
+#if LOG_ENABLE
 
 #define LOGI(fmt,agr...)	\
 do	\
@@ -39,6 +41,13 @@ do	\
 	printf("%s \r\n",NONE);	\
 }while(0)
 
+#else
+	
+#define LOGI(fmt,agr...)
+#define LOGW(fmt,agr...)
+#define LOGE(fmt,agr...)
+
+#endif
 
 #endif
 
